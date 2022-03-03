@@ -31,5 +31,17 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex2534/ReactNativeCrud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex2534/ReactNativeCrud/issues"
+  },
+  "homepage": "https://github.com/alex2534/ReactNativeCrud#readme"
 }
