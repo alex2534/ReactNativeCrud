@@ -1,49 +1,58 @@
-import React, { useState } from 'react';
-import {Text, TextInput} from 'react-native';
-import { Button } from 'react-native-elements/dist/buttons/Button';
+/* eslint-disable no-undef */
+import React, {useState, useContext} from 'react';
+import {Text, View, TextInput, StyleSheet, Button} from 'react-native';
 
-const UserForm = (props) => {
-
-  const [user, setUser] = useState(props.route.params? route.params: {})
+const UserForm = props => {
+  const [user, setUser] = useState(route.params ? route.params : {});
+  const {dispatch} = useContext(UsersContext);
 
   return (
-  <View style={style.form}>
-    <Text>Nome</Text>
-    <TextInput  
-    style={style.input}
-    onChangeText={firstName => setUser({...user, firstName})}
-    placeholder="Nome"
-    value={user.firstname}
-    />
-    <Text>Sobre nome</Text>
-    <TextInput  
-    style={style.input}
-    onChangeText={lastName => setUser({...user, lastName})}
-    placeholder="Sobre nome"
-    value={user.lastname}
-    />
-    <Button 
-      title="Salvar"
-      onPress={() =>{
-        navigation.goBack()
-      }}
-    />
-  </View>
-  )
+    <View style={style.form}>
+      <Text>Nome</Text>
+      <TextInput
+        style={style.input}
+        onChangeText={name => setUser({...user, name})}
+        placeholder="Informe o Nome"
+        value={user.name}
+      />
+      <Text>Email</Text>
+      <TextInput
+        style={style.input}
+        onChangeText={email => setUser({...user, email})}
+        placeholder="Informe o E-mail"
+        value={user.email}
+      />
+      <Text>URL do Avatar</Text>
+      <TextInput
+        style={style.input}
+        onChangeText={avatarUrl => setUser({...user, avatarUrl})}
+        placeholder="Informe a URL do Avatar"
+        value={user.avatarUrl}
+      />
+      <Button
+        title="Salvar"
+        onPress={() => {
+          dispatch({
+            type: user.id ? 'updateUser' : 'createUser',
+            payload: user,
+          });
+          navigation.goBack();
+        }}
+      />
+    </View>
+  );
 };
 
 const style = StyleSheet.create({
-
-  form:{
-    padding: 12
+  form: {
+    padding: 12,
   },
   input: {
     height: 40,
-    borderColor: "gray",
-    borderWith: 1,
+    borderColor: 'gray',
+    borderWidth: 1,
     marginBottom: 15,
-  }
-})
-
+  },
+});
 
 export default UserForm;

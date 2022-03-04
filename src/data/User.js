@@ -6,12 +6,12 @@ export default [
   },
   {
     id: 2,
-    name: 'jhonny',
+    firstName: 'jhonny',
     lastName: 'Doe',
   },
   {
     id: 3,
-    name: 'janne',
+    firstName: 'janne',
     lastName: 'Doe',
   },
 ];
